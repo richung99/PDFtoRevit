@@ -3,6 +3,7 @@ from PIL import Image
 from cv2 import *
 from tkinter import *
 import uuid
+import textToDir
 
 
 def cleanup_text(text):
@@ -24,7 +25,7 @@ with open('roomList.csv') as x:
 root = Tk()
 
 # Adjust size
-root.geometry("200x200")
+root.geometry("200x80")
 
 
 def show():
@@ -35,18 +36,22 @@ def show():
         imshow("cam-test", img)
         waitKey(0)
         destroyWindow("cam-test")
-        filename = 'IMG_' + str(uuid.uuid4()) + '.jpg'
+        filename = 'createIMG/IMG_' + str(uuid.uuid4()) + '.jpg'
         imwrite(filename, img)
+        info = IPTCInfo(filename, force=True)
+
+        info['keywords'].append(clicked.get())
+
+        info.save()
 
     # im = Image.open('filename.png')
     # rgb_im = im.convert('RGB')
     # rgb_im.save('filename.jpg')
 
-    info = IPTCInfo(filename, force=True)
 
-    info['keywords'].append(clicked.get())
-
-    info.save()
+def sort_pictures():
+    textToDir.create_dir()
+    textToDir.sort_by_tag()
 
 
 # datatype of menu text
@@ -55,11 +60,16 @@ clicked = StringVar()
 # initial menu text
 clicked.set(roomList[0])
 
+bottomFrame = Frame(root)
+bottomFrame.pack(side=BOTTOM)
+
 # Create Dropdown menu
 drop = OptionMenu(root, clicked, *roomList)
-drop.pack()
+drop.pack(pady=5)
 
-button = Button(root, text="Take Picture", command=show).pack()
+button = Button(bottomFrame, text="CAPTURE", command=show).pack(side=LEFT, padx=5, pady=10)
+
+buttonSort = Button(bottomFrame, text="SORT", command=sort_pictures).pack(side=LEFT, padx=5, pady=10)
 
 # Execute tkinter
 root.mainloop()
