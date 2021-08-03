@@ -26,10 +26,12 @@ Room Number,Room Name,
 Room Number,Room Name,
 ...
 ```
-Schedules that are exported in Revit should be reformatted such that the Room Number and Room Name are separated by commas and appear as the first 2 columns in the .csv file. To create file directories based on a Room List .csv:
+Schedules that are exported in Revit should be reformatted such that the Room Number and Room Name are separated by commas and appear as the first 2 columns in the .csv file.
+
+addMetaData.py is used to capture and sort images into room directories. Captured images are tagged with IPTC metadata keywords that contain the room name that is selected from a drop down menu. The drop down menu is populated from the 'roomList.csv' file.
 
 ```console
-> textToDir.py
+> addMetaData.py
 ```
 
 This will prompt you to select the .csv file to export, and all newly created file directories will be located under /createDirs.
