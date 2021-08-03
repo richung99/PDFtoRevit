@@ -1,4 +1,3 @@
-
 # PDFtoRevit
 
 PDFtoRevit is a Python script that uses EasyOCR and computer vision techniques to extract room names and numbers from a building plan PDF. It can also export a .csv file of a Room List to individual file directories.
