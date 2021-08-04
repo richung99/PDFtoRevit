@@ -35,7 +35,7 @@ addMetaData.py is used to capture and sort images into room directories. To use,
 
 A: The drop down menu is populated from roomList.csv. Replace this file to edit the contents of the drop down list.
 
-B: Images can be captured and stored inside of the createIMG directory. These images are tagged with IPTC metadata containing the room name. A preview of the capture image will be displayed on screen. This window can only be closed with a keyboard input and not by hitting the 'X' button.
+B: Images can be captured and stored inside of the createIMG directory. These images are tagged with IPTC metadata containing the room name. A live preview of the capture image will be displayed on screen. Press the spacebar to capture the image and exit the window.
 
 C: All images inside of the createIMG are sorted into individual room directories inside of the createDir directory based on their metadata tagging.
 
