@@ -3,7 +3,7 @@ from tkinter.filedialog import askopenfilename
 from iptcinfo3 import IPTCInfo
 import shutil
 
-ROOT_DIR = os.path.dirname(os.path.abspath("addMetaData.py"))
+# ROOT_DIR = os.path.dirname(os.path.abspath("addMetaData.py"))
 
 
 def cleanup_text(text):
@@ -24,7 +24,7 @@ def create_dir():
             if not os.path.exists(lineArr[0] + " " + lineArr[1]):
                 os.mkdir(lineArr[0] + " " + lineArr[1])
 
-    os.chdir(ROOT_DIR)
+    os.chdir('..')
 
 
 def sort_by_tag():
@@ -32,5 +32,5 @@ def sort_by_tag():
         if file.endswith(".jpg"):
             info = IPTCInfo('createIMG/' + file)
             infoTag = info['keywords']
-            # print(infoTag[0].decode("utf-8"))
+            print(infoTag[0].decode("utf-8"))
             shutil.copy('createIMG/' + file, 'createDir/' + infoTag[0].decode("utf-8"))

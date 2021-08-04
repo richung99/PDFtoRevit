@@ -29,20 +29,23 @@ root.geometry("200x80")
 
 
 def show():
-    cam = VideoCapture(1)
-    s, img = cam.read()
-    if s:
+    cam = VideoCapture(0)
+    while True:
+        s, img = cam.read()
         namedWindow("cam-test")
         imshow("cam-test", img)
-        waitKey(0)
-        destroyWindow("cam-test")
-        filename = 'createIMG/IMG_' + str(uuid.uuid4()) + '.jpg'
-        imwrite(filename, img)
-        info = IPTCInfo(filename, force=True)
+        k = waitKey(1)
+        if k % 256 == 32:
+            destroyWindow("cam-test")
+            filename = 'createIMG/IMG_' + str(uuid.uuid4()) + '.jpg'
+            imwrite(filename, img)
+            info = IPTCInfo(filename, force=True)
 
-        info['keywords'].append(clicked.get())
+            info['keywords'].append(clicked.get())
 
-        info.save()
+            info.save()
+
+            break
 
     # im = Image.open('filename.png')
     # rgb_im = im.convert('RGB')
