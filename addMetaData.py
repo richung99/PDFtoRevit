@@ -29,7 +29,7 @@ root.geometry("200x80")
 
 
 def show():
-    cam = VideoCapture(0)
+    cam = VideoCapture(1)
     s, img = cam.read()
     if s:
         namedWindow("cam-test")
