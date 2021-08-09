@@ -12,6 +12,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the dep
 pip install Pillow
 pip install easyOCR
 pip install enchant
+pip install iptcinfo3
 ```
 
 ## Image Processing
